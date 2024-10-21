@@ -1,3 +1,5 @@
+import "./general.css"
+
 function MeContacter() {
     return (
       <div className="MeContacter">
