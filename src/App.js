@@ -1,10 +1,10 @@
 import { Routes, Route, Link} from 'react-router-dom';
-import './App.css';
-import Accueil from './Accueil';
-import Services from './Services';
-import Realisations from './Realisations';
-import Blog from './Blog';
-import MeContacter from './MeContacter';
+import './style/App.css';
+import Accueil from './pages/Accueil';
+import Services from './pages/Services';
+import Realisations from './pages/Realisations';
+import Blog from './pages/Blog';
+import MeContacter from './pages/MeContacter';
 
 
 function App() {
