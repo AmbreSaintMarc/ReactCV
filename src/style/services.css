@@ -3,9 +3,6 @@
     padding-bottom: 100px;
 }
 .services__title-zone {
-    padding: 10% ;
-    padding-left: 15%;
-    padding-right: 15%;
     display: grid;
     justify-items: center;
 }
@@ -105,8 +102,5 @@
         width: 100%;
         height: 300px;
     }
-    .services__title-zone {
-        padding: 5%;
-        padding-bottom: 7%;
-    }
+
  }
