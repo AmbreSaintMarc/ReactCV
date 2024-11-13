@@ -11,6 +11,7 @@
     background-color: #0d6efd;
     width: 30%;
     height: 4px;
+    margin: 30px;
 }
 
 .services-categories {
@@ -28,6 +29,19 @@
     padding-right: 20px;
     display: grid;
 }
+
+.ux-design:hover {
+    background-color: #cde1f8;
+}
+
+.web-development:hover {
+    background-color: #cde1f8;
+}
+
+.seo:hover {
+    background-color: #cde1f8;
+}
+
 .ux-design__image {
     background-image: url("../icons/desktop.png");
     height: 50px;

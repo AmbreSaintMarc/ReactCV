@@ -79,7 +79,7 @@ function Blog() {
               <Card.Img variant="top" src="../img/blog/technos.png" />
               <Card.Body>
                 <Card.Title as="h2">Apprendre à coder</Card.Title>
-                <Card.Text >
+                <Card.Text>
                   Some quick example text to build on the card title and make up the bulk of the card's content.
                 </Card.Text>
                 <Button variant="primary">Lire la suite</Button>
