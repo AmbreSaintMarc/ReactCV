@@ -12,6 +12,12 @@ p {
     padding-left: 50px;
     padding-right: 50px;
 }
+
+.button {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+}
 .blue-bar {
     background-color: #0d6efd;
     width: 150px;

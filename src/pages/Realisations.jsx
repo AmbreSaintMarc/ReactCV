@@ -30,9 +30,9 @@ function Realisations() {
             <Card.Body>
               <Card.Title as="h2">Restaurant Akira</Card.Title>
               <Card.Text>
-                Réalisation d'un site vitrine.
+                Réalisation d'un site vitrine.          
               </Card.Text>
-              <Button variant="outline-primary">Voir</Button>
+              <Button variant="outline-primary" className="button">Voir</Button>
             </Card.Body>
             <Card.Header>Site réalisé avec Wordpress</Card.Header>
           </Card>
