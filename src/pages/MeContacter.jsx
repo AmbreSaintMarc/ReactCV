@@ -9,7 +9,7 @@ function MeContacter() {
         <div className="contact__layer"></div>
         <div className="contact">
           <div className="contact__title-zone">
-            <h1 className="text-uppercase">Me Contacter</h1>
+            <h1 className="text-uppercase" id="contact__title">Me Contacter</h1>
             <p>Pour me contacter en vue d'un entretien ou d'une future collaboration, merci de remplir le formulaire de contact.</p>
             <div className="title__blue-bar"></div>
           </div>

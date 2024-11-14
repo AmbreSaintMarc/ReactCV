@@ -11,6 +11,7 @@ import Realisations from './pages/Realisations';
 import Blog from './pages/Blog';
 import MeContacter from './pages/MeContacter';
 import Legals from "./pages/Legals";
+import Github from "./pages/Github";
 
 function App() {
   return (
@@ -53,10 +54,12 @@ function App() {
           <Route path="/Blog" element={<Blog/>}></Route>
           <Route path="/MeContacter" element={<MeContacter/>}></Route>
           <Route path="/Legals" element={<Legals/>}></Route>
+          <Route path="/Github" element={<Github/>}></Route>
         </Routes>
       </body>
 
       <footer class="">
+      <a href="#" class="scrollToTopBtn">scroll-to-top</a>
         <div class="col mb-3">
           <a href="/" class="d-flex align-items-center mb-3 link-body-emphasis text-decoration-none">
             <svg class="bi me-2" width="40" height="32"><use></use></svg>
@@ -68,7 +71,7 @@ function App() {
               <p>40 rue Laure Diebold 69009 Lyon, France </p>
               <p>Téléphone : 06 20 30 40 50</p>
               <div className='social'>
-                <a href="https://github.com/AmbreSaintMarc"><div className='icons__github'></div></a>
+                <Link to="/Github"><div className='icons__github'></div></Link>
                 <a href="https://www.linkedin.com"><div className='icons__linkedin'></div></a>
                 <a href="https://x.com"><div className='icons__twitter'></div></a>
               </div>
