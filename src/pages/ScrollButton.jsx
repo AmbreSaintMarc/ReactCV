@@ -6,9 +6,10 @@ const GoTop = (props) => {
     <>
       <div className={props.showGoTop} onClick={props.scrollUp}>
         <button className="goTop">
-          <i className="goTop__text fas fa-chevron-up" id="goTop__text">
-            <div className="goTop__icon"></div>
-          </i> 
+          <div id="goTop__text">
+            <i className="goTop__text fas fa-chevron-up" id="goTop__content">
+           </i> 
+          </div>
         </button>
       </div>
     </>
