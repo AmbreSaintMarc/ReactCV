@@ -4,27 +4,12 @@
 
 .goTop {
     position: fixed;
-    box-shadow: 2px 2px 5px #0d6efd ;
-    height: 30px;
-    border-radius: 25px;
+    width: 150px;
     bottom: 5%;
     left: 90%;
     cursor: pointer;
-    border: 0px;
-}
-
-.goTop__text {
-    display: grid;
-    justify-items: center;
-    align-items: center;
-}
-
-#goTop__content {
-    background: url(../icons/arrow-top.png);
-    width: 15px;
-    height: 18px;
-}
-
-#goTop__content:hover {
-    transform: scale(1.1);
+    background-color: #0d6efd;
+    color: #EEE;
+    border-radius: 20px;
+    border: rgba(0, 0, 0, 0);
 }
