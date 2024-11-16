@@ -1,4 +1,5 @@
 import { Routes, Route, Link} from 'react-router-dom';
+import React, { useState, useEffect, useRef } from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
 import NavItem from 'react-bootstrap/NavItem';
 import NavLink from 'react-bootstrap/NavLink';
@@ -12,33 +13,56 @@ import Blog from './pages/Blog';
 import MeContacter from './pages/MeContacter';
 import Legals from "./pages/Legals";
 import Github from "./pages/Github";
+import ScrollButton from './pages/ScrollButton';
+
 
 function App() {
+  const [scrollPosition, setSrollPosition] = useState(0);
+  const [showGoTop, setshowGoTop] = useState("goTopHidden");
+  const handleVisibleButton = () => {
+    const position = window.pageYOffset;
+    setSrollPosition(position);
+
+    if (scrollPosition > 50) {
+      return setshowGoTop("goTop");
+    } else if (scrollPosition < 50) {
+      return setshowGoTop("goTopHidden");
+    }
+  };
+  useEffect(() => {
+    window.addEventListener("scroll", handleVisibleButton);
+  });
+
+  const refScrollUp = useRef();
+  const handleScrollUp = () => {
+    refScrollUp.current.scrollIntoView({ behavior: "smooth" });
+  };
   return (
     <div className="App">
+      <div ref={refScrollUp}> </div>
       <header>
-        <nav class="d-flex flex-wrap py-3" id="nav">
-          <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-           <svg class="bi me-2" width="40" height="32"><use></use></svg>
-           <span class="fs-4 text-uppercase" id="nav__title">John Doe</span>
+        <nav className="d-flex flex-wrap py-3" id="nav">
+          <a href="/" className="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+           <svg className="bi me-2" width="40" height="32"><use></use></svg>
+           <span className="fs-4 text-uppercase" id="nav__title">John Doe</span>
           </a>
           <div className='menu'>
-            <ul class="nav nav-pills" id="nav-pills">
-              <li class="nav-item text-uppercase"><Link to="/" class="nav-link" id="Accueil">Accueil</Link></li>
-              <li class="nav-item text-uppercase"><Link to="/Services" class="nav-link">Services</Link></li>
-              <li class="nav-item text-uppercase"><Link to="/Realisations" class="nav-link">Réalisations</Link></li>
-              <li class="nav-item text-uppercase"><Link to="/Blog" class="nav-link">Blog</Link></li>
-              <li class="nav-item text-uppercase"><Link to="/MeContacter" class="nav-link">Me Contacter</Link></li>
+            <ul className="nav nav-pills" id="nav-pills">
+              <li className="nav-item text-uppercase"><Link to="/" className="nav-link" id="Accueil">Accueil</Link></li>
+              <li className="nav-item text-uppercase"><Link to="/Services" className="nav-link">Services</Link></li>
+              <li className="nav-item text-uppercase"><Link to="/Realisations" className="nav-link">Réalisations</Link></li>
+              <li className="nav-item text-uppercase"><Link to="/Blog" className="nav-link">Blog</Link></li>
+              <li className="nav-item text-uppercase"><Link to="/MeContacter" className="nav-link">Me Contacter</Link></li>
             </ul>
           </div>
           <Dropdown as={NavItem} className='menu-burger'>
           <Dropdown.Toggle as={NavLink}><div className='menu-burger__icon'></div></Dropdown.Toggle>
-            <Dropdown.Menu class="nav nav-pills" id="menu-burger__content">
-              <Dropdown.Item class="nav-item text-uppercase"><Link to="/" class="nav-link" id="Accueil">Accueil</Link></Dropdown.Item>
-              <Dropdown.Item class="nav-item text-uppercase"><Link to="/Services" class="nav-link">Services</Link></Dropdown.Item>
-              <Dropdown.Item class="nav-item text-uppercase"><Link to="/Realisations" class="nav-link">Réalisations</Link></Dropdown.Item>
-              <Dropdown.Item class="nav-item text-uppercase"><Link to="/Blog" class="nav-link">Blog</Link></Dropdown.Item>
-              <Dropdown.Item class="nav-item text-uppercase"><Link to="/MeContacter" class="nav-link">Me Contacter</Link></Dropdown.Item>
+            <Dropdown.Menu className="nav nav-pills" id="menu-burger__content">
+              <Dropdown.Item className="nav-item text-uppercase"><Link to="/" className="nav-link" id="Accueil">Accueil</Link></Dropdown.Item>
+              <Dropdown.Item className="nav-item text-uppercase"><Link to="/Services" className="nav-link">Services</Link></Dropdown.Item>
+              <Dropdown.Item className="nav-item text-uppercase"><Link to="/Realisations" className="nav-link">Réalisations</Link></Dropdown.Item>
+              <Dropdown.Item className="nav-item text-uppercase"><Link to="/Blog" className="nav-link">Blog</Link></Dropdown.Item>
+              <Dropdown.Item className="nav-item text-uppercase"><Link to="/MeContacter" className="nav-link">Me Contacter</Link></Dropdown.Item>
             </Dropdown.Menu>
            </Dropdown>
   
@@ -47,6 +71,7 @@ function App() {
       </header>
 
       <body>
+        <ScrollButton showGoTop={showGoTop} scrollUp={handleScrollUp} />
         <Routes>
           <Route path="/" element={<Accueil/>}></Route>
           <Route path="/Services" element={<Services/>}></Route>
@@ -58,11 +83,10 @@ function App() {
         </Routes>
       </body>
 
-      <footer class="">
-      <a href="#" class="scrollToTopBtn">scroll-to-top</a>
-        <div class="col mb-3">
-          <a href="/" class="d-flex align-items-center mb-3 link-body-emphasis text-decoration-none">
-            <svg class="bi me-2" width="40" height="32"><use></use></svg>
+      <footer className="">
+        <div className="col mb-3">
+          <a href="/" className="d-flex align-items-center mb-3 link-body-emphasis text-decoration-none">
+            <svg className="bi me-2" width="40" height="32"><use></use></svg>
           </a>
           <div className='info'>
 
@@ -77,64 +101,64 @@ function App() {
               </div>
             </div>
 
-            <div class="col mb-3" id="info-categories">
+            <div className="col mb-3" id="info-categories">
               <h4>Liens utiles</h4>
-              <ul class="nav flex-column">
-                <li class="mb-2" id="info-categories__link">
-                  <div class="info-arrow"></div>
-                  <Link to="/" class="nav-link p-0 text-body-secondary">Accueil</Link>
+              <ul className="nav flex-column">
+                <li className="mb-2" id="info-categories__link">
+                  <div className="info-arrow"></div>
+                  <Link to="/" className="nav-link p-0 text-body-secondary">Accueil</Link>
                 </li>
-                <li class="mb-2" id="info-categories__link">
-                  <div class="info-arrow"></div>
-                  <Link to="/" class="nav-link p-0 text-body-secondary">A propos</Link>
+                <li className="mb-2" id="info-categories__link">
+                  <div className="info-arrow"></div>
+                  <Link to="/" className="nav-link p-0 text-body-secondary">A propos</Link>
                 </li>
-                <li class="mb-2" id="info-categories__link">
-                  <div class="info-arrow"></div>
-                  <Link to="/Services" class="nav-link p-0 text-body-secondary">Services</Link>
+                <li className="mb-2" id="info-categories__link">
+                  <div className="info-arrow"></div>
+                  <Link to="/Services" className="nav-link p-0 text-body-secondary">Services</Link>
                 </li>
-                <li class="mb-2" id="info-categories__link">
-                  <div class="info-arrow"></div>
-                  <Link to="MeContacter" class="nav-link p-0 text-body-secondary">Me contacter</Link>
+                <li className="mb-2" id="info-categories__link">
+                  <div className="info-arrow"></div>
+                  <Link to="MeContacter" className="nav-link p-0 text-body-secondary">Me contacter</Link>
                 </li>
-                <li class="mb-2" id="info-categories__link">
-                  <div class="info-arrow"></div>
-                  <Link to="/Legals" class="nav-link p-0 text-body-secondary">Mentions légales</Link>
+                <li className="mb-2" id="info-categories__link">
+                  <div className="info-arrow"></div>
+                  <Link to="/Legals" className="nav-link p-0 text-body-secondary">Mentions légales</Link>
                 </li>
               </ul>
             </div>
 
-            <div class="col mb-3" id="info-categories">
+            <div className="col mb-3" id="info-categories">
               <h4>Mes dernières réalisations</h4>
-                <ul class="nav flex-column">
-                  <li class="mb-2" id="info-categories__link-realisations">
-                    <div class="info-arrow"></div>
-                    <Link to="/Realisations" class="nav-link p-0 text-body-secondary">Fresh Food</Link>
+                <ul className="nav flex-column">
+                  <li className="mb-2" id="info-categories__link-realisations">
+                    <div className="info-arrow"></div>
+                    <Link to="/Realisations" className="nav-link p-0 text-body-secondary">Fresh Food</Link>
                   </li>
-                  <li class="mb-2" id="info-categories__link-realisations">
-                    <div class="info-arrow"></div>
-                    <Link to="/Realisations" class="nav-link p-0 text-body-secondary">Restaurant Akira</Link>
+                  <li className="mb-2" id="info-categories__link-realisations">
+                    <div className="info-arrow"></div>
+                    <Link to="/Realisations" className="nav-link p-0 text-body-secondary">Restaurant Akira</Link>
                   </li>
-                  <li class="mb-2" id="info-categories__link-realisations">
-                    <div class="info-arrow"></div>
-                    <Link to="/Realisations" class="nav-link p-0 text-body-secondary">Espace bien-être</Link>
+                  <li className="mb-2" id="info-categories__link-realisations">
+                    <div className="info-arrow"></div>
+                    <Link to="/Realisations" className="nav-link p-0 text-body-secondary">Espace bien-être</Link>
                   </li>
                 </ul>
             </div>
 
-            <div class="col mb-3" id="info-categories">
+            <div className="col mb-3" id="info-categories">
               <h4>Mes derniers articles</h4>
-                <ul class="nav flex-column">
+                <ul className="nav flex-column">
                   <li class="mb-2" id="info-categories__link-blog">
-                      <div class="info-arrow"></div>
-                      <Link to="/Blog" class="nav-link p-0 text-body-secondary">Coder son site en HTML/CSS</Link>
+                      <div className="info-arrow"></div>
+                      <Link to="/Blog" className="nav-link p-0 text-body-secondary">Coder son site en HTML/CSS</Link>
                   </li>
-                  <li class="mb-2" id="info-categories__link-blog">
-                      <div class="info-arrow"></div>
-                      <Link to="/Blog" class="nav-link p-0 text-body-secondary">Vendre ses produits sur le web</Link>
+                  <li className="mb-2" id="info-categories__link-blog">
+                      <div className="info-arrow"></div>
+                      <Link to="/Blog" className="nav-link p-0 text-body-secondary">Vendre ses produits sur le web</Link>
                   </li>
-                  <li class="mb-2" id="info-categories__link-blog">
-                      <div class="info-arrow"></div>
-                      <Link to="/Blog" class="nav-link p-0 text-body-secondary">Se positionner sur Google</Link>
+                  <li className="mb-2" id="info-categories__link-blog">
+                      <div className="info-arrow"></div>
+                      <Link to="/Blog" className="nav-link p-0 text-body-secondary">Se positionner sur Google</Link>
                   </li>
                 </ul>
             </div>
