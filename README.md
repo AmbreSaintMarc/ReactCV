@@ -1,4 +1,4 @@
-# Getting starter with the project :
+# Getting started with the project :
 
 You'll need to make sure you have the latest react version
 
