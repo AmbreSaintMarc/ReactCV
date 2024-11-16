@@ -3,31 +3,28 @@
 }
 
 .goTop {
-    display: block;
-}
-
-#goTop__text {
-    display: grid;
-    justify-items: center;
-    align-items: center;
     position: fixed;
     box-shadow: 2px 2px 5px #0d6efd ;
-    width: 30px;
     height: 30px;
     border-radius: 25px;
     bottom: 5%;
     left: 90%;
     cursor: pointer;
-    text-align: center;
-    line-height: 30px;
+    border: 0px;
 }
 
-#goTop__text:hover {
-    transform: scale(1.1);
+.goTop__text {
+    display: grid;
+    justify-items: center;
+    align-items: center;
 }
 
-.goTop__icon {
+#goTop__content {
     background: url(../icons/arrow-top.png);
     width: 15px;
     height: 18px;
+}
+
+#goTop__content:hover {
+    transform: scale(1.1);
 }
